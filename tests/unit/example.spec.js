@@ -50,15 +50,15 @@ describe('Cart', () => {
     wrapper.vm.removeFromCart('burger')
     expect(wrapper.vm.contents).not.toContain('burger')
   })
-  test('place succesful order', () => {
-    const wrapper = mount(Cart)
-    wrapper.vm.addToCart('burger')
-    wrapper.vm.addToCart('shake')
-    wrapper.vm.addToCart('fries')
-    wrapper.vm.placeOrder()
+  /*
+  test('Change size and color', () => {
+    const wrapper = mount(shirtViewer)
+    wrapper.vm.shirtModifier('size-52')
+    wrapper.vm.shirtModifier('green')
     expect(wrapper.vm.contents).toHaveLength(0)
-    expect(wrapper.text()).toContain('Your order will be done in 5 minutes')
+    expect(wrapper.vm.contents()).toContain('52', 'green') <- ??
   })
+  */
   test('fail to place empty order', () => {
     const wrapper = mount(Cart)
     wrapper.vm.placeOrder()
