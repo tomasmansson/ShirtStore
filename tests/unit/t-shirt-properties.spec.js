@@ -40,6 +40,12 @@ describe('Shop.vue', () => {
     expect(wrapper.vm.realtimeViewer()).toEqual('green')
   })
 
+  test('TD10 uploading your own picture as design', () => {
+    const wrapper = mount(uploader)
+    wrapper.vm.addTorealtimeViewer[1]('green')
+    expect(wrapper.vm.realtimeViewer()).toEqual('green')
+  })
+
   test('TD17 changing rear as well as front', () => {
     const wrapper = mount (tShirtConfig)
     wrapper.changeViewBack(true)  //<--- stämmer detta?
