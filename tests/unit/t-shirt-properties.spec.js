@@ -28,6 +28,33 @@ describe('Shop.vue', () => {
     expect(wrapper.vm.tShirt.text()).toEqual('blue balls')
   })
 
+  test('TD12/TD04 change text size', () => {
+    const wrapper = mount(tShirtConfig)
+    wrapper.changeText.size('12')
+    expect(wrapper.vm.tShirt.text.size()).toEqual('12')
+  })
+
+  test('TD13/TD04 change colour on text', () => {
+    const wrapper = mount(tShirtConfig)
+    wrapper.changeText.colour('white')
+    expect(wrapper.vm.tShirt.text.colour()).toEqual('white')
+  })
+
+  test('TD14/TD04 change text to bold and cursive', () => {
+    const wrapper = mount(tShirtConfig)
+    wrapper.changeText.bold(true)
+    wrapper.changeText.cursive(true)
+    expect(wrapper.vm.tShirt.text.bold()).toBeTruthy()
+    expect(wrapper.vm.tShirt.text.cursive()).toBeTruthy()
+  })
+
+  test('TD15/TD04 change font', () => {
+    const wrapper = mount(tShirtConfig)
+    wrapper.changeText.font('wingdings')
+    expect(wrapper.vm.tShirt.text.font()).toEqual('wingdings')
+  })
+  
+
   test('TD06 Price is visible during tshirt creation', () => {
     const wrapper = mount(tShirtConfig)
     wrapper.chooseSize('L')
