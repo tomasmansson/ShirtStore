@@ -16,6 +16,12 @@ describe('Shop.vue', () => {
     expect(wrapper.vm.tShirt.colour()).toEqual('green')
   })
 
+  test('TD23 choose material: cotton', () => {
+    const wrapper = mount(tShirtConfig)
+    wrapper.chooseMaterial('cotton')
+    expect(wrapper.vm.tShirt.material()).toEqual('cotton')
+  })
+
   test('TD04 add text: blue balls', () => {
     const wrapper = mount(tShirtConfig)
     wrapper.addText('blue balls')
@@ -34,5 +40,11 @@ describe('Shop.vue', () => {
     expect(wrapper.vm.realtimeViewer()).toEqual('green')
   })
 
+  test('TD17 changing rear as well as front', () => {
+    const wrapper = mount (tShirtConfig)
+    wrapper.changeViewBack.true  //<--- stämmer detta?
+    wrapper.chooseColour('red')
+    expect(wrapper.vm.realtimeViewer()).toMatch('red')
+  })
 
 })
