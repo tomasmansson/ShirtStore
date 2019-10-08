@@ -42,7 +42,7 @@ describe('Shop.vue', () => {
 
   test('TD17 changing rear as well as front', () => {
     const wrapper = mount (tShirtConfig)
-    wrapper.changeViewBack.true  //<--- stämmer detta?
+    wrapper.changeViewBack(true)  //<--- stämmer detta?
     wrapper.chooseColour('red')
     expect(wrapper.vm.realtimeViewer()).toMatch('red')
   })
