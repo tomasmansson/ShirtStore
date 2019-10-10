@@ -3,7 +3,7 @@ let api = [
    description: 'Get all orders',
    request:{
      method: 'get',
-     url: '/orders',
+     url: '/Order',
      params: ['id']
    },
    response:{
@@ -16,10 +16,10 @@ let api = [
    }
  },
  {
-   description: 'Get all t-shirt size',
+   description: 'Get all tshirt size',
    request:{
      method: 'get',
-     url: '/rest/t-shirt/size'
+     url: '/rest/tshirt/size'
    },
    response:{
      content:[
@@ -34,36 +34,18 @@ let api = [
    description: 'color',
    request:{
      method: 'get',
-     url: '/orders',
+     url: '/tshirt/colour',
      }
    },
    response:{
      color: Number,
-     many: Number
-   }
- },
- {
-   description: 'Create one animal',
-   request:{
-     method: 'put',
-     url: '/rest/animals/:id',
-     params: ['id']
-     body:{
-       name: String,
-       type: String,
-       age: Number
-     }
-   },
-   response:{
-     statusCode: Number,
-     error: Object
    }
  },
  {
    description: 'Delete one t-shirt',
    request:{
      method: 'delete',
-     url: '/rest/tshirt/:Number',
+     url: '/tshirt/:orderid',
    },
    response:{
      statusCode: Number,
