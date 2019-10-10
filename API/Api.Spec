@@ -47,7 +47,7 @@ let api = [
   {
     description: 'Create one tshirt',
     request:{
-      method: 'put',
+      method: 'post',
       url: '/rest/tshirt/:new',
       params: ['new']
       body:{
@@ -70,10 +70,10 @@ let api = [
     }
   },
   {
-    description: 'Delete one animal using its id',
+    description: 'Delete one tshirt',
     request:{
       method: 'delete',
-      url: '/rest/animals/:id',
+      url: '/rest/tshirt/:id',
       params: ['id']
     },
     response:{
