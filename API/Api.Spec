@@ -1,46 +1,42 @@
 let api = [
   {
-    description: 'Get one animal using its id',
+    description: 'Get one order using its id',
     request:{
       method: 'get',
-      url: '/rest/animals/:id',
+      url: '/rest/order/:id',
       params: ['id']
     },
     response:{
       content:{
-        id: Number,
-        name: String,
-        type: String,
-        age: Number
+        orderid: Number,
+        userid: Number,
+        date: String,
       }
     }
   },
   {
-    description: 'Get all animals',
+    description: 'Get all order',
     request:{
       method: 'get',
-      url: '/rest/animals'
+      url: '/rest/order'
     },
     response:{
       content:[
         {
-        id: Number,
-        name: String,
-        type: String,
-        age: Number
+        orderid: Number,
+        userid: Number,
+        date: String,
         }
       ]
     }
   },
   {
-    description: 'Create one animal',
+    description: 'Create one order',
     request:{
       method: 'post',
-      url: '/rest/animals',
+      url: '/rest/order',
       body:{
-        name: String,
-        type: String,
-        age: Number
+        userid: String,
       }
     },
     response:{
@@ -49,15 +45,23 @@ let api = [
     }
   },
   {
-    description: 'Create one animal',
+    description: 'Create one tshirt',
     request:{
       method: 'put',
-      url: '/rest/animals/:id',
-      params: ['id']
+      url: '/rest/tshirt/:new',
+      params: ['new']
       body:{
-        name: String,
-        type: String,
-        age: Number
+        text: String,
+        textsize: Number,
+        colour: string,
+        material: Number,
+        size: String,
+        textcolour: String,
+        bold: String,
+        cursive: String,
+        font: Number
+        img: String,
+        imgsize: String,
       }
     },
     response:{
