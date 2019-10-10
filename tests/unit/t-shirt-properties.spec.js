@@ -31,29 +31,34 @@ describe('Shop.vue', () => {
   test('TD12/TD04 change text size', () => {
     const wrapper = mount(tShirtConfig)
     wrapper.changeText.size('12')
-    expect(wrapper.vm.tShirt.text.size()).toEqual('12')
+    expect(wrapper.vm.tShirt.textSize()).toEqual('12')
   })
 
   test('TD13/TD04 change colour on text', () => {
     const wrapper = mount(tShirtConfig)
     wrapper.changeText.colour('white')
-    expect(wrapper.vm.tShirt.text.colour()).toEqual('white')
+    expect(wrapper.vm.tShirt.textColour()).toEqual('white')
   })
 
   test('TD14/TD04 change text to bold and cursive', () => {
     const wrapper = mount(tShirtConfig)
     wrapper.changeText.bold(true)
     wrapper.changeText.cursive(true)
-    expect(wrapper.vm.tShirt.text.bold()).toBeTruthy()
-    expect(wrapper.vm.tShirt.text.cursive()).toBeTruthy()
+    expect(wrapper.vm.tShirt.textBold()).toBeTruthy()
+    expect(wrapper.vm.tShirt.textBursive()).toBeTruthy()
   })
 
   test('TD15/TD04 change font', () => {
     const wrapper = mount(tShirtConfig)
     wrapper.changeText.font('wingdings')
-    expect(wrapper.vm.tShirt.text.font()).toEqual('wingdings')
+    expect(wrapper.vm.tShirt.textFont()).toEqual('wingdings')
   })
   
+  test('TD19/TD04 change font', () => {
+    const wrapper = mount(tShirtConfig)
+    wrapper.changeModel('type2')
+    expect(wrapper.vm.tShirt.model()).toEqual('type2')
+  })
 
   test('TD06 Price is visible during tshirt creation', () => {
     const wrapper = mount(tShirtConfig)
