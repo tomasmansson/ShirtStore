@@ -45,7 +45,7 @@ describe('Shop.vue', () => {
     wrapper.changeText.bold(true)
     wrapper.changeText.cursive(true)
     expect(wrapper.vm.tShirt.textBold()).toBeTruthy()
-    expect(wrapper.vm.tShirt.textBursive()).toBeTruthy()
+    expect(wrapper.vm.tShirt.textCursive()).toBeTruthy()
   })
 
   test('TD15/TD04 change font', () => {
@@ -54,7 +54,7 @@ describe('Shop.vue', () => {
     expect(wrapper.vm.tShirt.textFont()).toEqual('wingdings')
   })
   
-  test('TD19/TD04 change font', () => {
+  test('TD19/TD04 change tshirt model', () => {
     const wrapper = mount(tShirtConfig)
     wrapper.changeModel('type2')
     expect(wrapper.vm.tShirt.model()).toEqual('type2')
@@ -94,6 +94,18 @@ describe('Shop.vue', () => {
     wrapper.changeView.back(true)  //<--- stämmer detta?
     wrapper.chooseColour('red')
     expect(wrapper.vm.realtimeViewer()).toMatch('red')
+  })
+
+  test('TD25 see past orders', () => {
+    const wrapper = mount (order)
+    wrapper.userHistory('userid')
+    expect(wrapper.vm.history()).toMatch('red') //<--- en match behövs
+  })
+
+  test('TD25 see past orders', () => {
+    const wrapper = mount (order)
+    wrapper.orderHistory('orderid')
+    expect(wrapper.vm.history()).toMatch('red') //<--- en match behövs
   })
 
 })
