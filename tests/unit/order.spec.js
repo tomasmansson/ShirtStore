@@ -22,8 +22,9 @@ describe('Shop.vue', () => {
 
   test('TD22 I order using a discount code and get 10% discount', () => {
     const wrapper = mount(orderConfirmation)
+    let discountprice = (price*0.9)
     wrapper.enterDiscountCode('SUPERSALE2019')
-    expect(wrapper.vm.order.price()).toEqual(priceBefore * 0.9)
+    expect(wrapper.vm.order.price()).toEqual(discountprice)
 
   })
 
