@@ -96,16 +96,13 @@ describe('Shop.vue', () => {
     expect(wrapper.vm.realtimeViewer()).toMatch('red')
   })
 
-  test('TD25 see past orders', () => {
+  test('TD25 see earlier created tshirt', () => {
     const wrapper = mount (order)
-    wrapper.userHistory('userid')
-    expect(wrapper.vm.history()).toMatch('red') //<--- en match behövs
-  })
+    const wrapper2 = mount(tShirtConfig)
 
-  test('TD25 see past orders', () => {
-    const wrapper = mount (order)
     wrapper.orderHistory('orderid')
-    expect(wrapper.vm.history()).toMatch('red') //<--- en match behövs
+    wrapper2.chooseColour('green')
+    expect(wrapper.vm.history()).toMatch('green') //<--- en match behövs
   })
 
 })

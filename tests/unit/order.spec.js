@@ -27,17 +27,12 @@ describe('Shop.vue', () => {
     expect(wrapper.vm.order.price()).toEqual(discountprice)
 
   })
-
-  test('TD24 I click order history and it shows me earlier orders', () => {
-    //const wrapper = mount(orderConfirmation)
-    //wrapper.vm.addToorderConfirmation('Purchase ... done!')
-
+  
+  test('TD24 see past orders', () => {
+    const wrapper = mount (order)
+    wrapper.userHistory('userid')
+    expect(wrapper.vm.history()).toMatch('red') //<--- en match behövs
   })
 
-  test('TD25 in order history I see how my first ordered thsirt was configured', () => {
-    //const wrapper = mount(orderConfirmation)
-    //wrapper.vm.addToorderConfirmation('Purchase ... done!')
-
-  })
 
 })
