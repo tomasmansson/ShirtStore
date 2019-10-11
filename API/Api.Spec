@@ -1,4 +1,38 @@
 let api = [
+    {
+    description: 'Create user',
+    request:{
+      method: 'post',
+      url: '/rest/user/createuser',
+    },
+      body:{
+        username: String,
+        password: String,
+        firstname: String,
+        lastname: String,
+        address: String,
+        postnr: Number,
+        city: String,
+      }
+    }
+  },
+      {
+    description: 'Update user',
+    request:{
+      method: 'put',
+      url: '/rest/user/:userid',
+      param:['userid']
+    },
+      body:{
+        password: String,
+        firstname: String,
+        lastname: String,
+        address: String,
+        postnr: Number,
+        city: String,
+      }
+    }
+  },
   {
     description: 'Get one order using its id',
     request:{
@@ -88,5 +122,29 @@ let api = [
       statusCode: Number,
       error: Object
     }
+  },
+  description: 'update order',
+  request:{
+    method: 'put',
+    url: '/rest/order/:orderid.
+    params: ['orderid']
+    body:{
+        text: String,
+        textsize: Number,
+        colour: string,
+        material: Number,
+        size: String,
+        textcolour: String,
+        bold: String,
+        cursive: String,
+        font: Number
+        img: String,
+        imgsize: String,
+    }
+  },
+  response:{
+    statuscode: Number,
+    error: Object
   }
+
 ]
