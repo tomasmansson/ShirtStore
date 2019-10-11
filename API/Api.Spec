@@ -3,14 +3,16 @@ let api = [
     description: 'Get one order using its id',
     request:{
       method: 'get',
-      url: '/rest/order/:id',
-      params: ['id']
+      url: '/rest/order/:orderid',
+      params: ['orderid']
     },
     response:{
       content:{
         orderid: Number,
         userid: Number,
         date: String,
+        price: Number,
+        discount: String,
       }
     }
   },
@@ -26,6 +28,8 @@ let api = [
         orderid: Number,
         userid: Number,
         date: String,
+        price: Number,
+        discount: String,
         }
       ]
     }
@@ -37,6 +41,8 @@ let api = [
       url: '/rest/order',
       body:{
         userid: String,
+        price: Number,
+        discount: String,
       }
     },
     response:{
@@ -51,6 +57,8 @@ let api = [
       url: '/rest/tshirt/:new',
       params: ['new']
       body:{
+        userid: Number,
+        orderid: Number
         text: String,
         textsize: Number,
         colour: string,
@@ -73,8 +81,8 @@ let api = [
     description: 'Delete one tshirt',
     request:{
       method: 'delete',
-      url: '/rest/tshirt/:id',
-      params: ['id']
+      url: '/rest/tshirt/:orderid',
+      params: ['orderid']
     },
     response:{
       statusCode: Number,
