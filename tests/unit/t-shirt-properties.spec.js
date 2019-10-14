@@ -90,7 +90,7 @@ describe('Shop.vue', () => {
   })
 
   test('TD17 changing rear as well as front', () => {
-    const wrapper = mount (tShirtConfig)
+    const wrapper = mount (tShirtConfig) //< --- borde kanske vara theshirtpreview
     wrapper.changeView.back(true)  //<--- stämmer detta?
     wrapper.chooseColour('red')
     expect(wrapper.vm.realtimeViewer()).toMatch('red')

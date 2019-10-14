@@ -3,15 +3,27 @@ export default{
   data(){
     return{
       orderData:{
-        firstName:'',
-        tShirt:{}
+        orderid:'',
+        userid: '',
+        date: '',
+        price: '',
+        discount: ''
       },
-      setFirstName(name){
-        this.orderData.firstName = name;
+      setOrderId(orderid){
+        this.orderData.orderid = orderid;
       },
-      setTShirt(tShirt){
-        this.orderData.tShirt = tShirt;
-      }
+      setUserId(userid){
+        this.orderData.userid = userid;
+      },
+      setDate(date){
+        this.orderData.date = date;
+      },
+      setPrice(price){
+        this.orderData.price = price;
+      },
+      setDiscount(discount){
+        this.orderData.discount = discount;
+      },
     }
   }
 }
