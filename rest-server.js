@@ -56,7 +56,7 @@ app.put('/rest/:table/:id', async (req, res) => {
 
 // DELETE raderar, ex: http://localhost:3000/magazines/2
 app.delete('/rest/:tag/:table/:id', async (req, res) => {
-  let result = await db.query("DELETE FROM ?? WHERE ? = ???", [req.params.tag, req.params.table, req.params.id]);
+  let result = await db.query("DELETE FROM ?? WHERE ? = ?", [req.params.table, req.params.id, req.params.tag ]);
   res.json(result);
 });
 
