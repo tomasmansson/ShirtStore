@@ -7,28 +7,32 @@ export default {
         textsize: '',
         colour: '',
         material: '',
+        font: '',
         size: '',
         textcolour: '',
         bold: '',
         cursive: '',
-        font: '',
+        textFont: '',
         img: '',
-        imgsize: ''
+        imgsize: '',
       },
-      setSize(size){
+      addText(text){
+        this.tShirt.text = text;
+      },
+      chooseSize(size){
         this.tShirt.size = size;
       },
       setTextSize(textsize){
         this.tShirt.textsize = textsize;
       },
-      setcolour(colour){
+      chooseColour(colour){
         this.tShirt.colour = colour;
       },
-      setMaterial(material){
+      chooseMaterial(material){
         this.tShirt.material = material;
       },
       setTextColour(tcolour){
-        this.tShirt.tcolour = tcolour;
+        this.tShirt.textcolour = tcolour;
       },
       setBold(bold){
         this.tShirt.bold = bold;
@@ -43,8 +47,11 @@ export default {
         this.tShirt.img = img;
       },
       setImgSize(imgsize){
-        this.tShirt.imgsize = imgsize
+        this.tShirt.imgsize = imgsize;
       },
+      changeModel(model){
+        this.tShirt.model = model;
+      }
     }
   }
 }
