@@ -1,47 +1,51 @@
 let api = [
-    {
+
+
+  {
     description: 'Create user',
-    request:{
+    request: {
       method: 'post',
       url: '/rest/user/createuser',
-    },
-      body:{
-        username: String,
-        password: String,
-        firstname: String,
-        lastname: String,
-        address: String,
-        postnr: Number,
-        city: String,
-      }
     }
-  },
-      {
+    body: {
+      username: String,
+      password: String,
+      firstname: String,
+      lastname: String,
+      address: String,
+      postnr: Number,
+      city: String,
+    }
+  }
+
+
+  {
     description: 'Update user',
-    request:{
+    request: {
       method: 'put',
       url: '/rest/user/:userid',
-      param:['userid']
-    },
-      body:{
-        password: String,
-        firstname: String,
-        lastname: String,
-        address: String,
-        postnr: Number,
-        city: String,
-      }
+      param: ['userid']
     }
-  },
+    body: {
+      password: String,
+      firstname: String,
+      lastname: String,
+      address: String,
+      postnr: Number,
+      city: String,
+    }
+  }
+
+
   {
     description: 'Get one order using its id',
-    request:{
+    request: {
       method: 'get',
       url: '/rest/order/:orderid',
       params: ['orderid']
-    },
-    response:{
-      content:{
+    }
+    response: {
+      content: {
         orderid: Number,
         userid: Number,
         date: String,
@@ -49,48 +53,54 @@ let api = [
         discount: String,
       }
     }
-  },
+  }
+
+
   {
     description: 'Get all order',
-    request:{
+    request: {
       method: 'get',
       url: '/rest/order'
-    },
-    response:{
-      content:[
+    }
+    response: {
+      content: [
         {
-        orderid: Number,
-        userid: Number,
-        date: String,
-        price: Number,
-        discount: String,
+          orderid: Number,
+          userid: Number,
+          date: String,
+          price: Number,
+          discount: String,
         }
       ]
     }
-  },
+  }
+
+
   {
     description: 'Create one order',
-    request:{
+    request: {
       method: 'post',
       url: '/rest/order',
-      body:{
+      body: {
         userid: String,
         price: Number,
         discount: String,
       }
-    },
-    response:{
+    }
+    response: {
       statusCode: Number,
       error: Object
     }
-  },
+  }
+
+
   {
     description: 'Create one tshirt',
-    request:{
+    request: {
       method: 'post',
       url: '/rest/tshirt/:new',
       params: ['new']
-      body:{
+      body: {
         userid: Number,
         orderid: Number
         text: String,
@@ -105,46 +115,58 @@ let api = [
         img: String,
         imgsize: String,
       }
-    },
-    response:{
+    }
+    response: {
       statusCode: Number,
       error: Object
     }
-  },
-  {
-    description: 'Delete one tshirt',
-    request:{
-      method: 'delete',
-      url: '/rest/tshirt/:orderid',
-      params: ['orderid']
-    },
-    response:{
-      statusCode: Number,
-      error: Object
-    }
-  },
-  description: 'update order',
-  request:{
-    method: 'put',
-    url: '/rest/order/:orderid.
-    params: ['orderid']
-    body:{
-        text: String,
-        textsize: Number,
-        colour: string,
-        material: Number,
-        size: String,
-        textcolour: String,
-        bold: String,
-        cursive: String,
-        font: Number
-        img: String,
-        imgsize: String,
-    }
-  },
-  response:{
-    statuscode: Number,
-    error: Object
   }
+
+
+  {
+  description: 'Delete one tshirt',
+  request: {
+    method: 'delete',
+    url: '/rest/tshirt/:orderid',
+    params: ['orderid']
+    }
+  response: {
+    statusCode: Number,
+    error: Object
+    }
+  }
+
+
+  {
+    description: 'update order',
+    request: {
+      method: 'put',
+      url: '/rest/order/:orderid.
+      params: ['orderid']
+    }
+    body: {
+      text: String,
+      textsize: Number,
+      colour: string,
+      material: Number,
+      size: String,
+      textcolour: String,
+      bold: String,
+      cursive: String,
+      font: Number
+      img: String,
+      imgsize: String,
+    }
+    response: {
+      statuscode: Number,
+      error: Object
+    }
+  }
+
+
+  {
+    description: 'get one t-shirt created by another customer'
+  }
+
 
 ]
