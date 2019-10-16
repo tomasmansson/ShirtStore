@@ -165,7 +165,29 @@ let api = [
 
 
   {
-    description: 'get one t-shirt created by another customer'
+    description: 'get one t-shirt created by another customer',
+    request: {
+      method: 'get',
+      url: '/rest/tshirt/:userid
+      params: ['userid']
+    }
+    response: {
+      content: {
+        userid: Number,
+        text: String,
+        textsize: Number,
+        colour: String,
+        material: String,
+        size: String,
+        model: String,
+        textcolour: String,
+        bold: String,
+        cursive: String,
+        font: String,
+        img: String,
+        imgsize: Number
+      }
+    }
   }
 
 
