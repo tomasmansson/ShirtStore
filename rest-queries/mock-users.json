@@ -1,7 +1,7 @@
 [
   {
     "username": "Rambo",
-    "password": "fantasatan",
+    "password": "trughjjbvcbf",
     "firstname": "sylvester",
     "lastname": "stallone",
     "address": "roundhouse 2",
@@ -10,21 +10,21 @@
   },
   {
     "username": "mongo",
-    "password": "fantasatan",
-    "firstname": "sylvester",
-    "lastname": "stallone",
-    "address": "roundhouse 2",
-    "postnr": 28133,
-    "city": "monstercity"
+    "password": "xvcnxcvmn4567",
+    "firstname": "jimmy",
+    "lastname": "mccartney",
+    "address": "byavaejen",
+    "postnr": 67567,
+    "city": "glimmen"
   },
   {
-    "username": "mongo",
-    "password": "fantasatan",
-    "firstname": "sylvester",
-    "lastname": "stallone",
-    "address": "roundhouse 2",
-    "postnr": 28133,
-    "city": "monstercity"
+    "username": "bongo",
+    "password": "785485=)//",
+    "firstname": "kalle",
+    "lastname": "anka",
+    "address": "västra hamngatan 23",
+    "postnr": 55852,
+    "city": "ankeborg"
   },
   {
     "username": "qwerty",
@@ -32,7 +32,7 @@
     "firstname": "frans",
     "lastname": "jansson",
     "address": "vägen",
-    "postnr": 12345,
+    "postnr": 23435,
     "city": "by23"
   }
 ]
