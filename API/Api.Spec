@@ -165,15 +165,15 @@ let api = [
 
 
   {
-    description: 'get one t-shirt created by another customer',
+    description: 'get one product created by another customer',
     request: {
       method: 'get',
-      url: '/rest/tshirt/:userid
-      params: ['userid']
+      url: '/rest/products/:productid
+      params: ['productid']
     }
     response: {
       content: {
-        userid: Number,
+        productid: Number,
         text: String,
         textsize: Number,
         colour: String,
