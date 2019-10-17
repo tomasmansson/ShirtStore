@@ -1,32 +1,38 @@
 [
   {
-    "firstName": "Jyoti",
-    "lastName": "Ollarenshaw",
-    "email": "jollarenshaw0@wikia.com",
-    "password": "EyepxpnYjV"
+    "username": "Rambo",
+    "password": "fantasatan",
+    "firstname": "sylvester",
+    "lastname": "stallone",
+    "address": "roundhouse 2",
+    "postnr": 28133,
+    "city": "monstercity"
   },
   {
-    "firstName": "Chaunce",
-    "lastName": "Vatini",
-    "email": "cvatini1@studiopress.com",
-    "password": "iSNbZV"
+    "username": "mongo",
+    "password": "fantasatan",
+    "firstname": "sylvester",
+    "lastname": "stallone",
+    "address": "roundhouse 2",
+    "postnr": 28133,
+    "city": "monstercity"
   },
   {
-    "firstName": "Maurine",
-    "lastName": "Gerardet",
-    "email": "mgerardet2@boston.com",
-    "password": "g9m0Yf"
+    "username": "mongo",
+    "password": "fantasatan",
+    "firstname": "sylvester",
+    "lastname": "stallone",
+    "address": "roundhouse 2",
+    "postnr": 28133,
+    "city": "monstercity"
   },
   {
-    "firstName": "Harri",
-    "lastName": "Denniss",
-    "email": "hdenniss3@twitpic.com",
-    "password": "HJY8wAnQ9"
-  },
-  {
-    "firstName": "Nolie",
-    "lastName": "Fabbri",
-    "email": "nfabbri4@noaa.gov",
-    "password": "y9Sjfx"
+    "username": "qwerty",
+    "password": "djkhgsldkjfg",
+    "firstname": "frans",
+    "lastname": "jansson",
+    "address": "vägen",
+    "postnr": 12345,
+    "city": "by23"
   }
 ]
