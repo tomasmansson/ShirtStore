@@ -1,47 +1,47 @@
 [
   {
     "price": 100,
-    "discount": "",
+    "discount": 10,
     "delivered": 1
   },
   {
     "price": 100,
-    "discount": "10",
+    "discount": 10,
     "delivered": 1
   },
   {
     "price": 100,
-    "discount": "10",
+    "discount": 10,
     "delivered": 1
   },
   {
     "price": 100,
-    "discount": "",
+    "discount": 10,
     "delivered": 1
   },
   {
     "price": 100,
-    "discount": "",
+    "discount": 10,
     "delivered": 0
   },
   {
     "price": 100,
-    "discount": "10",
+    "discount": 10,
     "delivered": 0
   },
   {
     "price": 100,
-    "discount": "10",
+    "discount": 10,
     "delivered": 0
   },
   {
     "price": 100,
-    "discount": "",
+    "discount": 10,
     "delivered": 0
   },
   {
     "price": 100,
-    "discount": "",
+    "discount": 10,
     "delivered": 0
   }
 ]
