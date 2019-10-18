@@ -8,7 +8,7 @@ module.exports = ({ assert, response, store }) => ({
     store.mockTshirts = require('./mock-tshirts.json');
     for(let i=0; i<store.mockTshirts.length; i++) {
       store.mockTshirts[i].userid=store.mockUsers[i].id;
-      store.mockTshirts[i].orderid=store.mockOrders[i].id;
+      store.mockTshirts[i].orderid=store.mockOrders[i].orderid;
     }
   }
 });
