@@ -41,7 +41,7 @@ let api = [
     description: 'Get one order using its id',
     request: {
       method: 'get',
-      url: '/rest/order/:orderid',
+      url: '/rest/orders/:orderid',
       params: ['orderid']
     }
     response: {
@@ -51,6 +51,7 @@ let api = [
         date: String,
         price: Number,
         discount: String,
+        delivered: Boolean,
       }
     }
   }
@@ -60,7 +61,7 @@ let api = [
     description: 'Get all order',
     request: {
       method: 'get',
-      url: '/rest/order'
+      url: '/rest/orders'
     }
     response: {
       content: [
@@ -70,6 +71,7 @@ let api = [
           date: String,
           price: Number,
           discount: String,
+          delivered: Boolean,
         }
       ]
     }
@@ -80,7 +82,7 @@ let api = [
     description: 'Create one order',
     request: {
       method: 'post',
-      url: '/rest/order',
+      url: '/rest/orders',
       body: {
         userid: String,
         price: Number,
@@ -98,7 +100,7 @@ let api = [
     description: 'Create one tshirt',
     request: {
       method: 'post',
-      url: '/rest/tshirt/:new',
+      url: '/rest/tshirts/:new',
       params: ['new']
       body: {
         userid: Number,
@@ -114,6 +116,7 @@ let api = [
         font: Number
         img: String,
         imgsize: String,
+        sharable: Boolean,
       }
     }
     response: {
@@ -127,7 +130,7 @@ let api = [
   description: 'Delete one tshirt',
   request: {
     method: 'delete',
-    url: '/rest/tshirt/:orderid',
+    url: '/rest/tshirts/:orderid',
     params: ['orderid']
     }
   response: {
@@ -141,7 +144,7 @@ let api = [
     description: 'update order',
     request: {
       method: 'put',
-      url: '/rest/order/:orderid.
+      url: '/rest/orders/:orderid.
       params: ['orderid']
     }
     body: {
@@ -156,6 +159,7 @@ let api = [
       font: Number
       img: String,
       imgsize: String,
+      sharable: Boolean,
     }
     response: {
       statuscode: Number,
@@ -168,12 +172,12 @@ let api = [
     description: 'get one product created by another customer',
     request: {
       method: 'get',
-      url: '/rest/products/:productid
-      params: ['productid']
+      url: '/rest/tshirtids/:tshirtid
+      params: ['thshirtid']
     }
     response: {
       content: {
-        productid: Number,
+        tshirtid: Number,
         text: String,
         textsize: Number,
         colour: String,
@@ -185,7 +189,8 @@ let api = [
         cursive: String,
         font: String,
         img: String,
-        imgsize: Number
+        imgsize: Number,
+        sharable:Boolean,
       }
     }
   }
