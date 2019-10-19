@@ -5,7 +5,7 @@ let api = [
     description: 'Create user',
     request: {
       method: 'post',
-      url: '/rest/user/createuser',
+      url: '/rest/users',
     }
     body: {
       username: String,
@@ -23,7 +23,7 @@ let api = [
     description: 'Update user',
     request: {
       method: 'put',
-      url: '/rest/user/:userid',
+      url: '/rest/users/:userid',
       param: ['userid']
     }
     body: {

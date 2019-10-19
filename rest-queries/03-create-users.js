@@ -4,7 +4,7 @@ module.exports = ({ response, store, repeat, i }) => ({
   body: store.mockUsers[i],
   test() {
     response.affectedRows.should.equal(1);
-    store.mockUsers[i].id = response.insertId;
+    store.mockUsers[i].userid = response.insertId;
     if(store.mockUsers[i + 1]){
       repeat();
     }

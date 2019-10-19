@@ -1,6 +1,6 @@
 [
   {
-  "id": 302,
+  "userid": 302,
   "username": "Rambo",
   "password": "trughjjbvcbf",
   "firstname": "sylvester",
@@ -10,7 +10,7 @@
   "city": "monstercity"
   },
   {
-  "id": 303,
+  "userid": 303,
   "username": "mongo",
   "password": "xvcnxcvmn4567",
   "firstname": "jimmy",
@@ -20,7 +20,7 @@
   "city": "glimmen"
   },
   {
-  "id": 304,
+  "userid": 304,
   "username": "bongo",
   "password": "785485=)//",
   "firstname": "kalle",
@@ -30,7 +30,7 @@
   "city": "ankeborg"
   },
   {
-  "id": 305,
+  "userid": 305,
   "username": "qwerty",
   "password": "djkhgsldkjfg",
   "firstname": "frans",
@@ -40,7 +40,7 @@
   "city": "by23"
   },
   {
-  "id": 306,
+  "userid": 306,
   "username": "kungen",
   "password": "ajsfdjkbb767.",
   "firstname": "daddy",
@@ -50,7 +50,7 @@
   "city": "lomma"
   },
   {
-  "id": 307,
+  "userid": 307,
   "username": "baghera",
   "password": "hakkahukka",
   "firstname": "leijon",
@@ -60,7 +60,7 @@
   "city": "norje"
   },
   {
-  "id": 308,
+  "userid": 308,
   "username": "willys",
   "password": "564263647",
   "firstname": "willy",
@@ -70,7 +70,7 @@
   "city": "eldorado"
   },
   {
-  "id": 309,
+  "userid": 309,
   "username": "hercules",
   "password": "hjsweyusdhj",
   "firstname": "donald",
@@ -80,7 +80,7 @@
   "city": "gotham"
   },
   {
-  "id": 310,
+  "userid": 310,
   "username": "megaman",
   "password": "kjhsndhey&/&/",
   "firstname": "john",
