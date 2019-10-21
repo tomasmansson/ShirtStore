@@ -7,6 +7,7 @@ module.exports = ({ assert, response, store }) => ({
   setup() {
     store.mockTshirts = require('./mock-tshirts.json');
     for(let i=0; i<store.mockTshirts.length; i++) {
+      store.mockTshirts[i].userid=store.mockUsers[i].userid;
       store.mockTshirts[i].orderid=store.mockOrders[i].orderid;
     }
   }
