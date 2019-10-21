@@ -4,7 +4,7 @@ module.exports = ({ response, store, repeat, i }) => ({
   body: store.mockTshirts[i],
   test() {
     response.affectedRows.should.equal(1);
-    //if unique id for tshirts is wanted, then it should be inserted here
+    store.mockTshirts[i].tshirtid = response.insertId;
     if(store.mockTshirts[i + 1]){
       repeat();
     }
