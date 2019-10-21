@@ -1,0 +1,1074 @@
+{
+	"info": {
+		"_postman_id": "7e384710-06d5-4659-b358-4bcd94f16a52",
+		"name": "ShirtStore-individual",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "01-delete-all-users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65670ee9-2d12-4b11-9bdc-5b1e2fdda21d",
+						"exec": [
+							"// The response as json",
+							"let response = pm.response.json();",
+							"",
+							"pm.test('warningCount should be 0', function(){",
+							"    pm.expect(response.warningCount).to.equal(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "02-check-no-users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6fb7004-9672-46bb-9901-57270f4b0a95",
+						"exec": [
+							"// The response as json",
+							"let response = pm.response.json();",
+							"",
+							"pm.test('no users should be left in db', function(){",
+							"    pm.expect(response).to.deep.equal([]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/rest/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "03-create-users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "766819db-5ce4-44d8-802b-56830bd796ff",
+						"exec": [
+							"// Setting mockdata and counter as environement variables",
+							"// Note: Environement variables can only be strings!",
+							"if (!pm.environment.has(\"mockData\")) {",
+							"    let mockData = [",
+							"      {",
+							"\"username\": \"Rambo\",",
+							"\"password\": \"trughjjbvcbf\",",
+							"\"firstname\": \"sylvester\",",
+							"\"lastname\": \"stallone\",",
+							"\"address\": \"roundhouse 2\",",
+							"\"postnr\": 28133,",
+							"\"city\": \"monstercity\"",
+							"},",
+							"{",
+							"\"username\": \"mongo\",",
+							"\"password\": \"xvcnxcvmn4567\",",
+							"\"firstname\": \"jimmy\",",
+							"\"lastname\": \"mccartney\",",
+							"\"address\": \"byavaejen\",",
+							"\"postnr\": 67567,",
+							"\"city\": \"glimmen\"",
+							"},",
+							"{",
+							"\"username\": \"bongo\",",
+							"\"password\": \"785485=)//\",",
+							"\"firstname\": \"kalle\",",
+							"\"lastname\": \"anka\",",
+							"\"address\": \"västra hamngatan 23\",",
+							"\"postnr\": 55852,",
+							"\"city\": \"ankeborg\"",
+							"},",
+							"{",
+							"\"username\": \"qwerty\",",
+							"\"password\": \"djkhgsldkjfg\",",
+							"\"firstname\": \"frans\",",
+							"\"lastname\": \"jansson\",",
+							"\"address\": \"vägen\",",
+							"\"postnr\": 23435,",
+							"\"city\": \"by23\"",
+							"},",
+							"{",
+							"\"username\": \"kungen\",",
+							"\"password\": \"ajsfdjkbb767.\",",
+							"\"firstname\": \"daddy\",",
+							"\"lastname\": \"DJ\",",
+							"\"address\": \"partyvägen\",",
+							"\"postnr\": 65748,",
+							"\"city\": \"lomma\"",
+							"},",
+							"{",
+							"\"username\": \"baghera\",",
+							"\"password\": \"hakkahukka\",",
+							"\"firstname\": \"leijon\",",
+							"\"lastname\": \"mannen\",",
+							"\"address\": \"torget\",",
+							"\"postnr\": 34564,",
+							"\"city\": \"norje\"",
+							"},",
+							"{",
+							"\"username\": \"willys\",",
+							"\"password\": \"564263647\",",
+							"\"firstname\": \"willy\",",
+							"\"lastname\": \"wonka\",",
+							"\"address\": \"jajjaveijen\",",
+							"\"postnr\": 89899,",
+							"\"city\": \"eldorado\"",
+							"},",
+							"{",
+							"\"username\": \"hercules\",",
+							"\"password\": \"hjsweyusdhj\",",
+							"\"firstname\": \"donald\",",
+							"\"lastname\": \"trumpis\",",
+							"\"address\": \"kyrkvägen\",",
+							"\"postnr\": 54857,",
+							"\"city\": \"gotham\"",
+							"},",
+							"{",
+							"\"username\": \"megaman\",",
+							"\"password\": \"kjhsndhey&/&/\",",
+							"\"firstname\": \"john\",",
+							"\"lastname\": \"johnson\",",
+							"\"address\": \"1st street\",",
+							"\"postnr\": 85458,",
+							"\"city\": \"hököpinge\"",
+							"}",
+							"    ];",
+							"    pm.environment.set(\"counter\", 0);",
+							"    pm.environment.set(\"mockData\", JSON.stringify(mockData));",
+							" }",
+							" ",
+							" // Reading/parsing environment variables back to local variables",
+							" let counter = pm.environment.get(\"counter\") / 1;",
+							" let mockData = JSON.parse(pm.environment.get(\"mockData\"));",
+							" let {username, password, firstname, lastname, address, postnr, city} = mockData[counter]",
+							" // Save to environemnt for use in query",
+							" pm.environment.set('username', username);",
+							" pm.environment.set('password', password);",
+							" pm.environment.set('firstname', firstname);",
+							" pm.environment.set('lastname', lastname);",
+							" pm.environment.set('address', address);",
+							" pm.environment.set('postnr', postnr);",
+							" pm.environment.set('city', city);",
+							"",
+							"",
+							"  ",
+							"  ",
+							" "
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1466bde0-4cdd-4f2d-a2af-98b38f861fc5",
+						"exec": [
+							"// The response as json",
+							" let response = pm.response.json();",
+							"",
+							"// Reading/parsing environment variables back to local variables",
+							"let counter = pm.environment.get(\"counter\") / 1;",
+							"let mockData = JSON.parse(pm.environment.get(\"mockData\"));",
+							" ",
+							"// Add the insert id to the mockData and save to environment",
+							"mockData[counter].userid = response.insertId;",
+							"pm.environment.set('mockData', JSON.stringify(mockData));",
+							" ",
+							"// Test affectedRows",
+							"pm.test('affectedRows should be 1', function(){",
+							"    pm.expect(response.affectedRows).to.equal(1);",
+							"});",
+							"",
+							"// Increment the counter and save to environment",
+							"counter++;",
+							"pm.environment.set('counter', counter);",
+							"",
+							"// Run request again if more mockdata",
+							"if(mockData[counter]){",
+							"    postman.setNextRequest('03-create-users')",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"username\": \"{{username}}\",\r\n\t\"password\": \"{{password}}\",\r\n\t\"firstname\": \"{{firstname}}\",\r\n\t\"lastname\": \"{{lastname}}\",\r\n\t\"address\": \"{{address}}\",\r\n\t\"postnr\": \"{{postnr}}\",\r\n\t\"city\": \"{{city}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "04-check-all-users-inserted",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81714324-0b32-41c3-b049-a066e13691ec",
+						"exec": [
+							"// The response as json",
+							" let response = pm.response.json();",
+							"",
+							"// Reading/parsing environment variable back to local variable",
+							"let mockData = JSON.parse(pm.environment.get(\"mockData\"));",
+							"",
+							"// Test expected length",
+							"pm.test('length should be equal to mock data length', function(){",
+							"    pm.expect(response.length).to.equal(mockData.length);",
+							"});",
+							"",
+							"// Test that the response data is deep equal to mockdata",
+							"pm.test('data in db should be same as mock data', function(){",
+							"    pm.expect(response).to.deep.equal(mockData);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "05-delete-all-orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65670ee9-2d12-4b11-9bdc-5b1e2fdda21d",
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"pm.test('warningCount should be 0', function(){",
+							"    pm.expect(response.warningCount).to.equal(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "06-check-no-orders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6fb7004-9672-46bb-9901-57270f4b0a95",
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"pm.test('no orders should be left in db', function(){",
+							"    pm.expect(response).to.deep.equal([]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/rest/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "07-create-orders",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "766819db-5ce4-44d8-802b-56830bd796ff",
+						"exec": [
+							"if (!pm.environment.has(\"mockDataOrders\")) {",
+							"    let mockDataOrders = [",
+							"      {",
+							"\"price\": 100,",
+							"\"discount\": 0,",
+							"\"delivered\": 1",
+							"},",
+							"{",
+							"\"price\": 100,",
+							"\"discount\": 10,",
+							"\"delivered\": 1",
+							"},",
+							"{",
+							"\"price\": 100,",
+							"\"discount\": 0,",
+							"\"delivered\": 1",
+							"},",
+							"{",
+							"\"price\": 100,",
+							"\"discount\": 0,",
+							"\"delivered\": 1",
+							"},",
+							"{",
+							"\"price\": 100,",
+							"\"discount\": 10,",
+							"\"delivered\": 0",
+							"},",
+							"{",
+							"\"price\": 100,",
+							"\"discount\": 10,",
+							"\"delivered\": 0",
+							"},",
+							"{",
+							"\"price\": 100,",
+							"\"discount\": 0,",
+							"\"delivered\": 0",
+							"},",
+							"{",
+							"\"price\": 100,",
+							"\"discount\": 10,",
+							"\"delivered\": 0",
+							"},",
+							"{",
+							"\"price\": 100,",
+							"\"discount\": 10,",
+							"\"delivered\": 0",
+							"}",
+							"    ];",
+							"    ",
+							"    let userIDMockData = JSON.parse(pm.environment.get(\"mockData\"));",
+							"    mockDataOrders.forEach((orders, index) => {",
+							"       orders.userid = userIDMockData[index].userid; ",
+							"    });",
+							"    ",
+							"    pm.environment.set(\"counter\", 0);",
+							"    pm.environment.set(\"mockDataOrders\", JSON.stringify(mockDataOrders));",
+							"    ",
+							" }",
+							" ",
+							" let counter = pm.environment.get(\"counter\") / 1;",
+							" let mockDataOrders = JSON.parse(pm.environment.get(\"mockDataOrders\"));",
+							" let {userid, price, discount, delivered} = mockDataOrders[counter]",
+							" pm.environment.set('userid', userid);",
+							" pm.environment.set('price', price);",
+							" pm.environment.set('discount', discount);",
+							" pm.environment.set('delivered', delivered);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1466bde0-4cdd-4f2d-a2af-98b38f861fc5",
+						"exec": [
+							" let response = pm.response.json();",
+							"",
+							"let counter = pm.environment.get(\"counter\") / 1;",
+							"let mockDataOrders = JSON.parse(pm.environment.get(\"mockDataOrders\"));",
+							" ",
+							"mockDataOrders[counter].orderid = response.insertId;",
+							"pm.environment.set('mockDataOrders', JSON.stringify(mockDataOrders));",
+							"",
+							" ",
+							"pm.test('affectedRows should be 1', function(){",
+							"    pm.expect(response.affectedRows).to.equal(1);",
+							"});",
+							"",
+							"counter++;",
+							"pm.environment.set('counter', counter);",
+							"",
+							"if(mockDataOrders[counter]){",
+							"    postman.setNextRequest('07-create-orders')",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"userid\": \"{{userid}}\",\r\n\t\"price\": \"{{price}}\",\r\n\t\"discount\": \"{{discount}}\",\r\n\t\"delivered\": \"{{delivered}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "08-check-all-orders-inserted",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81714324-0b32-41c3-b049-a066e13691ec",
+						"exec": [
+							" let response = pm.response.json();",
+							"",
+							"let mockDataOrders = JSON.parse(pm.environment.get(\"mockDataOrders\"));",
+							"",
+							"pm.test('length should be equal to mock data orders length', function(){",
+							"    pm.expect(response.length).to.equal(mockDataOrders.length);",
+							"});",
+							"",
+							"// Test that the response data is deep equal to mockDataOrders",
+							"pm.test('data in db should be same as mock data Orders', function(){",
+							"    pm.expect(response).to.deep.equal(mockDataOrders);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "09-delete-all-tshirts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "65670ee9-2d12-4b11-9bdc-5b1e2fdda21d",
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"pm.test('warningCount should be 0', function(){",
+							"    pm.expect(response.warningCount).to.equal(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/tshirts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"tshirts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "10-check-no-tshirts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c6fb7004-9672-46bb-9901-57270f4b0a95",
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"pm.test('no orders should be left in db', function(){",
+							"    pm.expect(response).to.deep.equal([]);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/rest/tshirts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"tshirts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "11-create-tshirts",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "766819db-5ce4-44d8-802b-56830bd796ff",
+						"exec": [
+							"if (!pm.environment.has(\"mockDataTshirts\")) {",
+							"    let mockDataTshirts = [",
+							"      {",
+							"\"text\": \"jaja\",",
+							"\"textsize\": 13,",
+							"\"colour\": \"white\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"M\",",
+							"\"model\": \"1\",",
+							"\"textcolour\": \"blue\",",
+							"\"bold\": 1,",
+							"\"cursive\": 1,",
+							"\"font\": \"calibri\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 0",
+							"},",
+							"{",
+							"\"text\": \"pewpew\",",
+							"\"textsize\": 12,",
+							"\"colour\": \"black\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"L\",",
+							"\"model\": \"0\",",
+							"\"textcolour\": \"green\",",
+							"\"bold\": 0,",
+							"\"cursive\": 0,",
+							"\"font\": \"helvetica\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 1",
+							"},",
+							"{",
+							"\"text\": \"boss\",",
+							"\"textsize\": 18,",
+							"\"colour\": \"blue\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"XXL\",",
+							"\"model\": \"5\",",
+							"\"textcolour\": \"blue\",",
+							"\"bold\": 0,",
+							"\"cursive\": 0,",
+							"\"font\": \"arial\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 0",
+							"},",
+							"{",
+							"\"text\": \"kung i baren\",",
+							"\"textsize\": 72,",
+							"\"colour\": \"white\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"S\",",
+							"\"model\": \"3\",",
+							"\"textcolour\": \"grey\",",
+							"\"bold\": 0,",
+							"\"cursive\": 0,",
+							"\"font\": \"verdana\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 1",
+							"},",
+							"{",
+							"\"text\": \"l.messi\",",
+							"\"textsize\": 22,",
+							"\"colour\": \"red\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"XL\",",
+							"\"model\": \"3\",",
+							"\"textcolour\": \"black\",",
+							"\"bold\": 0,",
+							"\"cursive\": 0,",
+							"\"font\": \"helvetica\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 0",
+							"},",
+							"{",
+							"\"text\": \"superzlatan\",",
+							"\"textsize\": 32,",
+							"\"colour\": \"yellow\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"M\",",
+							"\"model\": \"4\",",
+							"\"textcolour\": \"white\",",
+							"\"bold\": 1,",
+							"\"cursive\": 0,",
+							"\"font\": \"arial\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 0",
+							"},",
+							"{",
+							"\"text\": \"davve\",",
+							"\"textsize\": 17,",
+							"\"colour\": \"black\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"M\",",
+							"\"model\": \"1\",",
+							"\"textcolour\": \"blue\",",
+							"\"bold\": 1,",
+							"\"cursive\": 1,",
+							"\"font\": \"calibri\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 0",
+							"},",
+							"{",
+							"\"text\": \"pauw\",",
+							"\"textsize\": 13,",
+							"\"colour\": \"grey\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"XL\",",
+							"\"model\": \"2\",",
+							"\"textcolour\": \"white\",",
+							"\"bold\": 1,",
+							"\"cursive\": 0,",
+							"\"font\": \"verdana\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 0",
+							"},",
+							"{",
+							"\"text\": \"iffiff\",",
+							"\"textsize\": 22,",
+							"\"colour\": \"lightblue\",",
+							"\"material\": \"cotton\",",
+							"\"size\": \"XS\",",
+							"\"model\": \"0\",",
+							"\"textcolour\": \"white\",",
+							"\"bold\": 0,",
+							"\"cursive\": 1,",
+							"\"font\": \"cambria\",",
+							"\"img\": \"\",",
+							"\"imgsize\": 0,",
+							"\"sharable\": 1",
+							"}",
+							"    ];",
+							"    ",
+							"    let userIDMockData = JSON.parse(pm.environment.get(\"mockData\"));",
+							"    mockDataTshirts.forEach((Tshirts, index) => {",
+							"       Tshirts.userid = userIDMockData[index].userid; ",
+							"    });",
+							"    ",
+							"    let orderIDMockData = JSON.parse(pm.environment.get(\"mockDataOrders\"));",
+							"    mockDataTshirts.forEach((Tshirts, index) => {",
+							"       Tshirts.orderid = orderIDMockData[index].orderid; ",
+							"    });",
+							"    ",
+							"    pm.environment.set(\"counter\", 0);",
+							"    pm.environment.set(\"mockDataTshirts\", JSON.stringify(mockDataTshirts));",
+							"    ",
+							" }",
+							" ",
+							" let counter = pm.environment.get(\"counter\") / 1;",
+							" let mockDataTshirts = JSON.parse(pm.environment.get(\"mockDataTshirts\"));",
+							" let {userid, orderid, text, textsize, colour, material, size, model, textcolour, bold, cursive, font, img, imgsize, sharable} = mockDataTshirts[counter]",
+							" pm.environment.set('userid', userid);",
+							" pm.environment.set('orderid', orderid);",
+							" pm.environment.set('text', text);",
+							" pm.environment.set('textsize', textsize);",
+							" pm.environment.set('colour', colour);",
+							" pm.environment.set('material', material);",
+							" pm.environment.set('size', size);",
+							" pm.environment.set('model', model);",
+							" pm.environment.set('textcolour', textcolour);",
+							" pm.environment.set('bold', bold);",
+							" pm.environment.set('cursive', cursive);",
+							" pm.environment.set('font', font);",
+							" pm.environment.set('img', img);",
+							" pm.environment.set('imgsize', imgsize);",
+							" pm.environment.set('sharable', sharable);",
+							" "
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "1466bde0-4cdd-4f2d-a2af-98b38f861fc5",
+						"exec": [
+							" let response = pm.response.json();",
+							"",
+							"let counter = pm.environment.get(\"counter\") / 1;",
+							"let mockDataTshirts = JSON.parse(pm.environment.get(\"mockDataTshirts\"));",
+							" ",
+							"mockDataTshirts[counter].tshirtid = response.insertId;",
+							"pm.environment.set('mockDataTshirts', JSON.stringify(mockDataTshirts));",
+							"",
+							" ",
+							"pm.test('affectedRows should be 1', function(){",
+							"    pm.expect(response.affectedRows).to.equal(1);",
+							"});",
+							"",
+							"counter++;",
+							"pm.environment.set('counter', counter);",
+							"",
+							"if(mockDataTshirts[counter]){",
+							"    postman.setNextRequest('11-create-tshirts')",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"userid\": \"{{userid}}\",\r\n\t\"orderid\": \"{{orderid}}\",\r\n\t\"text\": \"{{text}}\",\r\n\t\"textsize\": \"{{textsize}}\",\r\n\t\"colour\": \"{{colour}}\",\r\n\t\"material\": \"{{material}}\",\r\n\t\"size\": \"{{size}}\",\r\n\t\"model\": \"{{model}}\",\r\n\t\"textcolour\": \"{{textcolour}}\",\r\n\t\"bold\": \"{{bold}}\",\r\n\t\"cursive\": \"{{cursive}}\",\r\n\t\"font\": \"{{font}}\",\r\n\t\"img\": \"{{img}}\",\r\n\t\"imgsize\": \"{{imgsize}}\",\r\n\t\"sharable\": \"{{sharable}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/tshirts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"tshirts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "12-check-all-tshirts-inserted",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81714324-0b32-41c3-b049-a066e13691ec",
+						"exec": [
+							" let response = pm.response.json();",
+							"",
+							"let mockDataTshirts = JSON.parse(pm.environment.get(\"mockDataTshirts\"));",
+							"",
+							"pm.test('length should be equal to mock data tshirts length', function(){",
+							"    pm.expect(response.length).to.equal(mockDataTshirts.length);",
+							"});",
+							"",
+							"pm.test('data in db should be same as mock data Tshirts', function(){",
+							"    pm.expect(response).to.deep.equal(mockDataTshirts);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/tshirts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"tshirts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "13-check-sharable-tshirts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "81714324-0b32-41c3-b049-a066e13691ec",
+						"exec": [
+							"let response = pm.response.json();",
+							"",
+							"let mockDataTshirts = JSON.parse(pm.environment.get(\"mockDataTshirts\"));",
+							"",
+							"/*",
+							"pm.test('length should be equal to 3, since there are 3 sharable tshirts in db', function(){",
+							"pm. expect(response.length).to.equal(3); ",
+							"});",
+							"*/",
+							"",
+							"",
+							"// filter the tshirts mock data, so we have the same as in otherstshirts",
+							"// then we can compare the data to the query result",
+							"let expected = mockDataTshirts.filter(row => row.sharable === 1);",
+							"pm.test('length should be equal to expected data length', function(){",
+							"   pm.expect(response.length).to.equal(expected.length);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/rest/otherstshirts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"rest",
+						"otherstshirts"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
